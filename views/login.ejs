@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Include head -->
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <!-- Navbar -->
+        <%- include('./partials/nav.ejs') %>
+
+            <h1>Login</h1>
+
+            <section>
+                <form action="/login" method="POST">
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">password: <label>
+                            <input type="text" id="password" name="password">
+                            <button>Submit</button>
+                </form>
+            </section>
+
+
+
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
+</html>
