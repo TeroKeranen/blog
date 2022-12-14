@@ -8,6 +8,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static('public'))
 
 
+// render to home (index) page
 app.get('/', (req,res) => {
     res.render('index', {title: 'All blogs'});
 })
