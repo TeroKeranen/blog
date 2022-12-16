@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Include head -->
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <!-- Navbar -->
+        <%- include('./partials/navRegistered.ejs') %>
+
+        <main class="blogit-osio">
+
+            <section class="otsikko">
+                <h1> Postaukset </h1>
+            </section>
+
+            <article class="blogs-grid">
+
+                <article class="single-blog">
+                    <% if(blogs.length > 0) { %>
+                        <% blogs.forEach(blog => { %>
+                            <div class="luonut">
+                                <p>Tekstin on luonut käyttäjä: <%= blog.username %></p>
+                            </div>
+                            <div class="blog">
+                                <h3><%= blog.title %></h3>
+                                <p><%= blog.snippet %></p>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>Ei ole yhtään blogia</p>
+                    <% } %>
+
+                </article>
+                
+            </article>
+           
+            
+        </main>
+
+
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
+</html>

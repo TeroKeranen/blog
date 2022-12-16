@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Include head -->
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <!-- Navbar -->
+        <%- include('./partials/navRegistered.ejs') %>
+
+
+            <h1>THIS IS create PAGE </h1>
+            <form action="/home" method="POST">
+                <label for="title">blog title</label>
+                <input type="text" id="title" name="title">
+                <label for="snippet">blog snippet</label>
+                <input type="text" id="snippet" name="snippet">
+                <label for="body">Blog body0</label>
+                <textarea name="body" id="body" cols="30" rows="10" ></textarea>
+                <button>submit</button>
+            </form>
+
+
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
+</html>

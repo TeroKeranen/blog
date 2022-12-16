@@ -7,16 +7,21 @@
     <body>
         <!-- Navbar -->
         <%- include('./partials/nav.ejs') %>
+            <div class="page-h1">
+                <h1>Login</h1>
+                <p>Jotta voit ruveta luomaan omaa blogia, sinun on ensiksi kirjauduttava sivullemme</p>
+            </div>
 
-            <h1>Login</h1>
-
-            <section>
-                <form action="/login" method="POST">
+            <section class="login-section">
+                <form action="/login" method="POST" class="form-section">
                     <label for="username">Username: </label>
                     <input type="text" id="username" name="username">
-                    <label for="password">password: <label>
-                            <input type="text" id="password" name="password">
-                            <button>Submit</button>
+                    <br/>
+                    <label for="password">password: </label>
+                    
+                    <input type="text" id="password" name="password">
+                    
+                    <button>Submit</button>
                 </form>
             </section>
 
