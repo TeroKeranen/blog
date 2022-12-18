@@ -27,8 +27,10 @@
     
     
     
-        <h2>Omien blogien kirjoittamisen hyödyt</h2>
-        <h2>ilman haittoja</h2>
+        <h2 class="about-h2">Omien blogien kirjoittamisen hyödyt</h2>
+        <h2 class="about-h2">ilman haittoja</h2>
+
+        <div class="about-center">
         
         <div class="btn-container">
             <button class="tab-btn" data-id="history">History</button>
@@ -47,6 +49,9 @@
             <div class="content" id="goals">
                 <h3>goals</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam laboriosam alias fugiat aspernatur quisquam, minima illo quibusdam doloremque asperiores vero dolore voluptatem officiis distinctio. Nam, cum corporis explicabo quibusdam dignissimos, aliquam illum atque iure repellat alias odio fuga ipsam!</p>
+            </div>
+            </article>
+
             </div>
         </article>
     
@@ -132,6 +137,7 @@
             // remove acticve from other buttons
             btns.forEach(function(btn) {
                 btn.classList.remove('active');
+                btn.style.color = "black"
                 e.target.classList.add('active');
             })
             // hide other articles
