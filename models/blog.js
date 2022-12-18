@@ -5,6 +5,9 @@ const blogSchema = new Schema({
     username: {
         type: String
     },
+    date: {
+        type: String
+    },
     title: {
         type: String,
         required: true

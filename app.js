@@ -15,6 +15,15 @@ app.use(express.static('public')) // setup css file
 mongoose.set('strictQuery', true);
 //
 //
+
+
+
+
+
+
+
+
+
 // Set up expressjs session handling middleware
 app.use(session({
     secret: "Our little secret.",
@@ -44,6 +53,11 @@ passport.deserializeUser(User.deserializeUser());
 
 // render to index page, when you are not logged in
 app.get('/', (req,res) => {
+
+    
+    
+    
+
     res.render('index', {title: 'All blogs'});
 })
 // render to about page when not logged in
@@ -79,12 +93,25 @@ app.get("/login", (req,res) => {
 
 // Post new blog to home page when you are logged in
 app.post('/home', (req,res) => {
+    
+    // date that display when adding new blog to site
+    let today = new Date();
+    let options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    }
+
+    let day = today.toLocaleDateString('en-US', options);
+    console.log(day);
+
     // Making new blog that include your username that you are logged in so we can display it to homa page
     const blog = new Blog({
         username: req.user.username,
         title: req.body.title,
         snippet: req.body.snippet,
-        body: req.body.body
+        body: req.body.body,
+        date: day
     })
     
     
@@ -108,6 +135,10 @@ app.get("/register", (req,res) => {
     
     res.render('register', {title: 'Register'});
 })
+
+app.get("/changepassword", (req,res) => {
+    res.render('changepassword', {title: 'change password'})
+})
 //
 // when you log in you will render to secret page
 app.get('/secret', (req,res) => {
@@ -127,11 +158,27 @@ app.get('/logout', (req,res) => {
     req.logout();
     res.redirect('/');
 })
-
-
+// Change your password 
+app.post("/changepassword", (req,res) => {
+    User.findByUsername(req.body.username, (err, user) => {
+        if(err) {
+            res.send(err)
+        } else {
+            user.changePassword(req.body.oldpassword, req.body.newpassword, function (err) {
+                if(err) {
+                    res.send(err);
+                } else {
+                    res.send('successfulu changed')
+                }
+            })
+        }
+    })
+})
 //
 // Register new user
 app.post("/register", (req,res) => {
+
+   
 
     User.register({username: req.body.username}, req.body.password, function(err, user) {
         if(err) {
@@ -159,6 +206,7 @@ app.post("/login", (req,res) => {
     req.login(user, (err) => {
         if(err) {
             console.log(err)
+            
         } else {
             passport.authenticate('local') (req,res, function () {
                 res.redirect('/secret')
