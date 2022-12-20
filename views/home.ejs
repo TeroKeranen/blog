@@ -25,7 +25,8 @@
                             </div>
                             <div class="blog">
                                 <h3><%= blog.title %></h3>
-                                <p><%= blog.snippet %></p>
+                                <p><%= blog.body.substring(0,100) + " ..." %></p>
+                                <a href="/home/<%= blog._id %>">Read more</a>
                                 <div class="date">
                                     <p><%= blog.date %></p>
                                 </div>

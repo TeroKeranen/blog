@@ -1,0 +1,314 @@
+.main-home {
+    padding: 0;
+    margin: 0;
+
+
+
+}
+
+.home-section,
+.index-third {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    padding: 2rem;
+
+    width: 80%;
+}
+
+.home-section h1 {
+    font-size: 3.5rem;
+
+}
+
+.info {
+    width: 80%;
+    font-size: 1.5rem;
+}
+.line {
+
+    margin-top: 100px;
+    width: 30%;
+    height: 4px;
+    background: rgb(255, 255, 255);
+    border-radius: 3px;
+    box-shadow: 3px 3px 30px rgb(60, 115, 167);
+
+
+
+}
+
+
+
+
+.home-section p,
+.page-h1 p {
+    margin-top: 30px;
+}
+
+.index-third {
+    background: rgb(248, 248, 248);
+    background: linear-gradient(326deg, rgb(248, 248, 248) 0%, rgb(244, 245, 247) 69%, rgb(242, 244, 245) 100%);
+    box-shadow: 3px 3px 70px rgb(160, 196, 238);
+
+
+    padding: 3rem;
+    width: 100%;
+    color: rgb(10, 10, 10);
+    margin: 0 auto 100px;
+
+
+}
+
+.index-third p {
+    width: 80%;
+    text-align: center;
+}
+
+.index-second {
+
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 50px;
+
+    padding: 2rem;
+
+    width: 100%;
+
+}
+
+.inline {
+    width: 20%;
+    height: 4px;
+    margin-left: 10px;
+    background: black;
+}
+
+
+
+.span1 span {
+    color: white;
+    position: relative;
+    display: inline-block;
+    animation: flip 5s infinite;
+    animation-delay: calc(.1s * var(--i));
+}
+
+.span2 span {
+    color: white;
+    position: relative;
+    display: inline-block;
+    animation: flip 5s infinite;
+    animation-delay: calc(.1s * var(--i));
+
+}
+
+.span3 span {
+    color: white;
+    position: relative;
+    display: inline-block;
+    animation: flip 5s infinite;
+    animation-delay: calc(.1s * var(--i));
+
+}
+
+.span4 span {
+    color: white;
+    position: relative;
+    display: inline-block;
+    animation: flip 5s infinite;
+    animation-delay: calc(.1s * var(--i));
+}
+
+
+
+
+
+
+.index-third h2 {
+    font-size: 2rem;
+    text-align: center;
+
+}
+
+.content {
+    display: none;
+}
+
+.about-center {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    border-radius: 10px;
+}
+
+
+.about-content {
+    width: 100%;
+
+    box-shadow: 10px 10px 30px rgb(80, 79, 79);
+
+
+
+}
+
+.btn-container {
+    display: flex;
+    border-radius: 10px;
+
+    width: 100%;
+
+
+
+}
+
+.tab-btn {
+    background: rgb(117, 115, 115);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: transparent;
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+
+
+
+
+    padding: 1rem;
+}
+
+.tab-btn.active {
+    background: white;
+}
+
+.content {
+    padding: 1rem;
+}
+
+.content p {
+    width: 100%;
+}
+
+.content.active {
+    display: block;
+}
+
+@keyframes flip {
+
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: black;
+    }
+
+    100% {
+        color: white;
+    }
+}
+@media screen and (min-width:785px) {
+    .content {
+            display: none;
+        }
+    
+    .about-center {
+    
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 0;
+        border-radius: 10px;
+    }
+    
+    .about-content {
+            width: 100%;
+            box-shadow: 10px 10px 30px rgb(80, 79, 79);
+    
+    
+    
+    }
+    
+    .btn-container {
+            display: flex;
+            border-radius: 10px;
+    
+            width: 100%;
+    
+    
+    
+    }
+    
+    .tab-btn {
+        background: rgb(117, 115, 115);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: transparent;
+        width: 100%;
+        color: white;
+        font-size: 1rem;
+    
+    
+    
+    
+        padding: 1rem;
+    }
+    
+    .tab-btn.active {
+        background: white;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+    
+    .content p {
+        width: 100%;
+    }
+    
+    .content.active {
+        display: block;
+    }
+    .index-second {
+        
+        width: 60%;
+    }
+        
+    .span1 {
+        font-size: 3.5rem;
+        
+    }
+        
+    .span2 {
+        font-size: 3rem;
+        margin-left: 30%;
+        
+    }
+        
+    .span3 {
+        font-size: 3rem;
+        margin-left: 47%;
+        
+        
+    }
+        
+    .span4 {
+        font-size: 3rem;
+        margin-left: 58%;
+        
+    }
+        
+    .info {
+        width: 80%;
+        font-size: 1.5rem;
+    }
+}

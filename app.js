@@ -6,7 +6,8 @@ const session = require('express-session');
 const passport = require('passport');
 //
 //  require mongoose model
-const User = require('./models/user')
+const User = require('./models/user');
+const { render } = require('ejs');
 const app = express();
 //
 app.set('view engine', 'ejs'); // setup ejs
@@ -68,7 +69,8 @@ app.get('/about', (req,res) => {
 // render home page when you are logged in
 app.get('/home', (req,res) => {
     // Find all the blogs that have been made.
-
+    
+    
      
     
     Blog.find()
@@ -78,6 +80,44 @@ app.get('/home', (req,res) => {
         .catch((err) => {
             console.log(err);
         })
+})
+
+app.get("/home/:id", (req,res) => {
+    const id = req.params.id;
+
+    const setUserId = req.user.id; // Haetaan kirjautuneen id
+
+    Blog.findById(id)
+        
+        
+    
+        .then(result => {
+            let blogCreaterId = result.id; // Haetaan blogista id, joka on sama kuin tekstin luoja user.id
+            
+            // Katsotaan että onko kirjautuneen henkilön id sama kuin blogin id
+            if(setUserId === blogCreaterId) {
+                // Jos id on sama niin käyttäjä voi poistaa oman tekstin
+                res.render("details", {blog: result, title: "Blog details"})
+            } else {
+                // Jos ei ole sama id niin käyttäjä ei voi poistaa muitten tekstejä
+                res.render('details2', {blog: result, title: "blog details"})
+            }
+         
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+// Tehdään tekstin poistamis mahdollisuus
+app.delete('/home/:id', (req,res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({redirect: '/home'})
+        })
+        .catch(err => console.log(err));
 })
 //
 // When you are logged in you go this about page
@@ -91,6 +131,7 @@ app.get("/login", (req,res) => {
     res.render('login', {title: "Login"});
 })
 
+
 // Post new blog to home page when you are logged in
 app.post('/home', (req,res) => {
     
@@ -103,19 +144,17 @@ app.post('/home', (req,res) => {
     }
 
     let day = today.toLocaleDateString('en-US', options);
-    console.log(day);
+    
+    
 
-    // Making new blog that include your username that you are logged in so we can display it to homa page
+    // Making new blog that include your username that you are logged in so we can display it to home page
     const blog = new Blog({
+        id: req.user.id, //Annetaan tietokannalle sama id kuin mikä käyttäjän id on.
         username: req.user.username,
         title: req.body.title,
-        snippet: req.body.snippet,
         body: req.body.body,
         date: day
     })
-    
-    
-    
     
     blog.save()
         .then((result) => {
@@ -124,13 +163,21 @@ app.post('/home', (req,res) => {
         .catch((err) => console.log(err));
 
 })
+
+
 //
 // when user go to new blog page it render to this create page
 app.get("/blogs/create", (req,res) => {
     res.render('create', { title: "Create a new blog"});
 })
+
+app.get("/image", (req,res) => {
+    res.render('image', {title: "Valitse kuva"})
+})
 //
 // render register page
+
+
 app.get("/register", (req,res) => {
     
     res.render('register', {title: 'Register'});
@@ -145,6 +192,7 @@ app.get('/secret', (req,res) => {
 
     
     const setUser = req.user.username; // display username in secret page
+    
     if (req.isAuthenticated()) {
         
         res.render('secret', {title: "secret", user:setUser })
