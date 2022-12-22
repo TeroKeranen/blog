@@ -186,6 +186,8 @@
 
 .tab-btn.active {
     background: white;
+    
+    box-shadow: 4px 3px 30px rgb(75, 92, 167);
 }
 
 .content {
@@ -199,6 +201,7 @@
 .content.active {
     display: block;
 }
+
 
 @keyframes flip {
 
@@ -310,5 +313,16 @@
     .info {
         width: 80%;
         font-size: 1.5rem;
+    }
+    .last-content {
+        background: rgb(248, 248, 248);
+            background: linear-gradient(326deg, rgb(248, 248, 248) 0%, rgb(244, 245, 247) 69%, rgb(242, 244, 245) 100%);
+            box-shadow: 3px 3px 70px rgb(160, 196, 238);
+        
+        
+            padding: 3rem;
+            width: 100%;
+            color: rgb(10, 10, 10);
+            margin: 0 auto 100px;
     }
 }

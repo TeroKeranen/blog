@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Include head -->
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <!-- Navbar -->
+        <%- include('./partials/navRegistered.ejs') %>
+
+            <section class="main-home">
+
+                <section class="home-section">
+                    <h1>Luo uusi blogi teksi nopeasti</h1>
+                    <h1>ilman rajoituksia</h1>
+                    <p class="info">Sivuston tarkoituksena on luoda oma käyttäjätunnus, jolla pääset tekemään omia blogi
+                        tekstejäsi. Ainoastaan rekisteröityneet asiakaat näkevät muitten tekemiä blogeja.</p>
+                    <span class="line"></span>
+                </section>
+
+
+
+
+
+            </section>
+
+            <article class="about index-third">
+
+
+
+                <h2 class="about-h2">Omien blogien kirjoittamisen hyödyt</h2>
+                <h2 class="about-h2">ilman haittoja</h2>
+
+                <div class="about-center">
+
+                    <div class="btn-container">
+                        <button class="tab-btn" data-id="history">Tarina</button>
+                        <button class="tab-btn" data-id="vision">Visio</button>
+                        <button class="tab-btn" data-id="goals">Tarkoitus</button>
+                    </div>
+                    <article class="about-content">
+                        <div class="content active" id="history">
+                            <h3>Tarina</h3>
+                            <p>Ajatus tämän sivun rakentamiseen lähti jostain en tiedä mistä</p>
+                        </div>
+                        <div class="content" id="vision">
+                            <h3>Visio</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat eum iste similique
+                                consequuntur voluptatibus laborum sed, quo quidem dignissimos quia.</p>
+                        </div>
+                        <div class="content" id="goals">
+                            <h3>Tarkoitus</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam laboriosam alias
+                                fugiat aspernatur quisquam, minima illo quibusdam doloremque asperiores vero dolore
+                                voluptatem officiis distinctio. Nam, cum corporis explicabo quibusdam dignissimos,
+                                aliquam illum atque iure repellat alias odio fuga ipsam!</p>
+                        </div>
+                    </article>
+
+                </div>
+            </article>
+
+            </article>
+            <section class="index-second">
+                <div class="span1">
+
+                    <span style="--i:1">K</span>
+                    <span style="--i:2">i</span>
+                    <span style="--i:3">r</span>
+                    <span style="--i:5">j</span>
+                    <span style="--i:6">o</span>
+                    <span style="--i:7">i</span>
+                    <span style="--i:8">t</span>
+                    <span style="--i:9">a</span>
+
+                    <span class="inline"></span>
+
+                </div>
+
+
+                <div class="span2">
+                    <span style="--i:9">i</span>
+                    <span style="--i:10">t</span>
+                    <span style="--i:11">s</span>
+                    <span style="--i:12">e</span>
+                    <span class="inline"></span>
+                </div>
+                <div class="span3">
+
+                    <span style="--i:14">j</span>
+                    <span style="--i:15">a</span>
+                    <span class="inline"></span>
+                </div>
+                <div class="span4">
+
+                    <span style="--i:16">j</span>
+                    <span style="--i:17">u</span>
+                    <span style="--i:18">l</span>
+                    <span style="--i:19">k</span>
+                    <span style="--i:20">a</span>
+                    <span style="--i:21">i</span>
+                    <span style="--i:22">s</span>
+                    <span style="--i:23">e</span>
+                    <span class="inline"></span>
+
+                </div>
+
+
+
+            </section>
+
+
+
+
+            <section class="index-third last-content">
+
+
+
+                <h2>Luo uusi blogi teksi nopeasti</h2>
+                <h2>ilman rajoituksia</h2>
+                <p class="info">Sivuston tarkoituksena on luoda oma käyttäjätunnus, jolla pääset tekemään omia blogi
+                    tekstejäsi.
+                    Ainoastaan rekisteröityneet asiakaat näkevät muitten tekemiä blogeja.</p>
+
+            </section>
+
+
+
+            <!-- Footer -->
+            <%- include('./partials/footer.ejs') %>
+    </body>
+
+
+    <script>
+    const btns = document.querySelectorAll('.tab-btn')
+    const about = document.querySelector('.about')
+    const articles = document.querySelectorAll('.content')
+    
+    about.addEventListener('click', function(e) {
+        const id = e.target.dataset.id;
+
+        if(id) {
+            // remove acticve from other buttons
+            btns.forEach(function(btn) {
+                btn.classList.remove('active');
+                btn.style.color = "black"
+                e.target.classList.add('active');
+            })
+            // hide other articles
+            articles.forEach(function(article) {
+                article.classList.remove('active')
+            })
+            const element = document.getElementById(id);
+            element.classList.add('active');
+        }
+    })
+
+    </script>
+
+</html>

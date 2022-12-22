@@ -93,16 +93,9 @@ app.get("/home/:id", (req,res) => {
     
         .then(result => {
             let blogCreaterId = result.id; // Haetaan blogista id, joka on sama kuin tekstin luoja user.id
-            
-            // Katsotaan että onko kirjautuneen henkilön id sama kuin blogin id
-            if(setUserId === blogCreaterId) {
-                // Jos id on sama niin käyttäjä voi poistaa oman tekstin
-                res.render("details", {blog: result, title: "Blog details"})
-            } else {
-                // Jos ei ole sama id niin käyttäjä ei voi poistaa muitten tekstejä
-                res.render('details2', {blog: result, title: "blog details"})
-            }
-         
+        
+                res.render("details", {blog: result, title: "Blog details", setUserId, blogCreaterId})
+  
         })
         .catch(err => {
             console.log(err)
@@ -123,6 +116,9 @@ app.delete('/home/:id', (req,res) => {
 // When you are logged in you go this about page
 app.get("/registeredAbout", (req,res) => {
     res.render('registeredAbout', {title: "about"})
+})
+app.get("/registeredIndex", (req,res) => {
+    res.render("registeredIndex", {title: "home"} )
 })
 //
 // render login page
@@ -190,12 +186,12 @@ app.get("/changepassword", (req,res) => {
 // when you log in you will render to secret page
 app.get('/secret', (req,res) => {
 
-    
+    const kirjautunut = req.isAuthenticated()
     const setUser = req.user.username; // display username in secret page
     
     if (req.isAuthenticated()) {
         
-        res.render('secret', {title: "secret", user:setUser })
+        res.render('secret', {title: "secret", user:setUser})
     } else {
         res.redirect('/login');
     }

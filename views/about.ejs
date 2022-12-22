@@ -5,15 +5,135 @@
 <%- include('./partials/head.ejs') %>
 
     <body>
+        
         <!-- Navbar -->
         <%- include('./partials/nav.ejs') %>
+        
+        <div class="about-container">
+            <div class="about-about">
+                <h1>THIS IS about PAGE </h1>
+            </div>
 
+            <div class="abouts-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis atque molestiae repellat dignissimos unde iusto veritatis possimus ut voluptas pariatur explicabo ratione sint expedita quisquam aliquam, autem in. Neque repellat laborum vitae ut aliquam, error inventore aliquid facilis fugit recusandae voluptatibus aperiam rem voluptates dolore itaque, explicabo cumque, commodi quae vero exercitationem nulla eum! Ducimus illum at beatae ut magni sed laboriosam maiores esse, aperiam corrupti, sunt autem. Hic repellat voluptatibus molestiae, minima rerum accusantium. Labore repudiandae soluta quo? Natus esse accusamus ullam exercitationem, nulla, quisquam rem error modi ipsum, ex similique aliquam aliquid dicta minima odit! Illum inventore explicabo tempora fuga sequi sapiente totam expedita quis? Sit, quaerat consectetur nisi laudantium deserunt distinctio atque impedit nesciunt quasi ex explicabo. Tenetur quia ex maxime architecto quod blanditiis labore temporibus quisquam cum, laboriosam asperiores eligendi dignissimos facilis corrupti ullam aliquid a? Totam nostrum ipsam porro, rem optio velit est libero aliquid corrupti, eaque natus veniam sed. Sapiente accusantium voluptatibus, eveniet aspernatur delectus necessitatibus error beatae architecto iste ullam excepturi vitae voluptatum totam assumenda enim, veniam quod fugiat rem eius facilis iure voluptas inventore quisquam. Adipisci, ducimus atque possimus, harum magnam officiis, saepe accusantium minima ut dolorum aut quo porro voluptate facilis.</p>
+            </div>
 
-            <h1>THIS IS about PAGE </h1>
+            
+        </div>
 
+        <div class="review-title">
+            <h1>Syyt kirjoittaa blogeja</h1>
+        </div>
 
+        <div class="review-container">
+            <!-- Title -->
+            
+        
+            <!-- Review -->
+            <div class="review">
+        
+                <div class="heading-container">
+                    <h2 id="heading-content"></h2>
+        
+                </div>
+
+                <div class="rev-text">
+                    
+                    <p id="info-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, officiis veniam! Necessitatibus qui
+                        dolor animi commodi cupiditate. Iusto, necessitatibus animi.</p>
+                </div>
+        
+                <div class="button-container">
+                    <button class="prev-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="next-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+        
+            </div>
+        
+        </div>
+            
+
+           
             <!-- Footer -->
-            <%- include('./partials/footer.ejs') %>
+        <%- include('./partials/footer.ejs') %>
+            
     </body>
+
+    <script>
+        const reviews = [
+             {
+                id: 1,
+
+                heading: " Kirjoitustaidon kehittyminen",
+                text: "Kirjoittaminen on ihmisten välistä viestintää ja aina jomman kumman, lähettäjän tai vastaanottajan, pitää nähdä se vaiva, että viestin sisältö menee varmasti perille. Harva meistä kuitenkaan haluaa lähettää epäselviä viestejä päivätyökseen, tai varsinkaan ottaa niitä vastaan. Bloggaaminen on loistava työkalu kehittyäkseen kirjoittajana, mutta sitä täytyy tehdä säännöllisesti. En sano, etteikö blogia voisi olla ilman säännöllisyyttä, mutta todennäköisesti tulet pettymään kirjoitustaidon kehityksen suhteen, jos kirjoitat vain silloin tällöin. Päätä siis kuinka usein kirjoitat ja vaikka vain tiettyinä päivinä, kuten tiistaisin, torstaisin ja sunnuntaisin. Täältä löydät kuusi vinkkiä kirjoittaa vaikuttavammin."
+
+            },
+            {
+                id: 2,
+
+                heading: "Ajatuksien jalostaminen",
+                text: "Jos olet yhtään samanlainen kuin minä, ajatuksesi lentävät pitkin päivää, koska nykymaailmassa virikkeitä aivoille on yksinkertaisesti lähes liikaa. Sen takia on hyvä osata kirjoittaa ja tiivistää ajatuksiaan paperille (tai ruudulle), koska useimmat ajatukset haihtuvat pois muutaman hetken kuluttua. Tämän viikon blogin perustaja Juuso Palander on kirjoittanut erittäin havainnollistavan postauksen muistin ulkoistamisesta.Perustin ensimmäisen blogini viime vuoden syystalvella ja syy siihen oli, että halusin kertoa omia ajatuksiani kaikille suomalaisille, jotka ovat kiinnostuneita sosiaalisesta mediasta ja digimaailmasta.Vastaanotto tuntui makealta ja muistan vieläkin, kuinka innoissaan sitä olikaan ensimmäisistä kommenteistaan."
+            },
+            {
+                id: 3,
+
+                heading: " Keskustelun aloittaminen",
+                text: "rvostettu markkinointiguru Jari Parantainen kertoo blogin olevan myös erinomainen todiste siitä, mikä on ominta alaasi ja mitä tiedät siitä. Ideaali tilannehan on se, että hallitsemastasi aihealueesta ei ole vielä ainuttakaan blogia ja aiot perustaa ensimmäisen. Tällöin olet todellakin keskustelun aloittaja ja herätät huomiota. Blogi on mitä mainioin keskustelualusta, jos sellaista vielä etsit. Kertomalla blogistasi eteenpäin pystyt löytämään tehokkaasti uusia keskustelukumppaneita, joilla on sama kiinnostuksen kohde. Täältä löydät vinkkejä blogisi markkinointiin."
+            },
+            {
+                id: 4,
+                heading: "Vaikuttaminen",
+                text: "Blogit ovat iso osa sosiaalisen median kenttää ja artikkeleiden ”toimittaminen” ei ole nykyään enää yliopistosta valmistuneiden journalistien yksinoikeus. Kaikki tietävät, että pääsemällä sanomalehteen voi vaikuttaa, mutta niin voi nykyään blogillakin. Voit kirjoittaa mistä tahansa sinua kiinnostavasta aiheesta ja laukoa mielipiteitäsi vapaan sanan vallitessa. Tärkeintä on, että löydät oikean kohderyhmän. Markkinointi&Mainonta -lehden sivusto on oiva esimerkki siitä, miten journalistiset lähteet voivat uutisoida yksittäisistä blogikirjoituksista."
+            },
+            {
+                id: 5,
+                heading: "Yhteys välittäviin ihmisiin",
+                text: "Nykyään todella moni vaihtoonlähtenyt opiskelija kirjoittaa blogiin ajastaan ulkomailla. Blogi onkin loistava väline yhteyden säilyttämiseksi esimerkiksi vanhempiinsa ja ystäviinsä. Mikä tärkeintä, se ei maksa useimmiten juuri mitään. Toinen esimerkki välittämisestä on tyttöystäväni blogi Neea-koirastamme. Sitä lukee kasvattajat, ystävämme ja suomalaisen dobermanni forumin jäsenet. He ihan aidosti välittävät, mitä Neealle kuuluu. Onko sinunkin lähipiirissäsi ihmisiä, jotka haluaisivat mahdollisesti kuulla sinusta enemmän? Tai jostain harrastuksestasi?"
+            }
+        ];
+
+        const heading = document.getElementById('heading-content')
+       
+        const info = document.getElementById('info-text')
+
+        const prevBtn = document.querySelector('.prev-btn')
+        const nextBtn = document.querySelector('.next-btn')
+
+        let currentItem = 0;
+        
+        window.addEventListener('DOMContentLoaded', function() {
+           showPerson(currentItem); 
+        })
+
+        function showPerson(person) {
+            const item = reviews[currentItem];
+            heading.textContent = item.heading
+            
+            info.textContent = item.text;
+        }
+
+        nextBtn.addEventListener('click', function () {
+            console.log("ksksk")
+            currentItem++
+            if(currentItem > reviews.length - 1) {
+
+                currentItem = 0
+            }
+            showPerson(currentItem)
+        });
+        prevBtn.addEventListener('click', function () {
+            currentItem--
+            if(currentItem < 0) {
+
+                currentItem = reviews.length -1
+            }
+            showPerson(currentItem)
+        });
+
+
+
+
+
+    </script>
 
 </html>

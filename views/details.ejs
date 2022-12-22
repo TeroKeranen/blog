@@ -10,16 +10,18 @@
 
             <main class="details-container">
 
-                <div class="details-container">
-                    <div class="details-tekija">
+                <div class="details">
+                    
+                    <div class="tiedot">
                         <p><%=blog.date%></p>
-                        <p><%= blog.username%></p>
-                    
-                        <a class="delete-btn" data-doc="<%=blog._id %>">Delete</a>
-                    
-                    
-                        
+                        <p>Made by <%= blog.username%></p>
                     </div>
+
+                        <%# katsotaan onko kirjautuneen id sama kuin blogin tehneen id, jos on niin tuodaan delete nappi esille %>
+                        <% if(setUserId === blogCreaterId) { %>
+                            <a class="delete-btn" data-doc="<%=blog._id %>">Delete</a>
+                        <% } %>
+                    
                 </div>
                 
                 <div class="details-content">
