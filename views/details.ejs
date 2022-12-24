@@ -55,6 +55,7 @@
         const trashcan = document.querySelector('a.delete-btn');
 
         trashcan.addEventListener('click', (e) => {
+            console.log("clicked");
             const endpoint = `/home/${trashcan.dataset.doc}`;
 
             fetch(endpoint, {

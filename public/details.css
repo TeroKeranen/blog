@@ -21,7 +21,7 @@
     padding: 1rem;
 }
 .delete-btn {
-    background: green;
+    background: rgb(3, 3, 3);
     color: white;
     border: none;
     cursor:pointer;

@@ -15,13 +15,30 @@
                 <div></div>
             </div>
         </div>
+        
         <ul class="links">
             <li><a href="/home">Home</a></li>
             <li><a href="/registeredAbout">About</a></li>
             <li><a href="/blogs/create">New blog</a></li>
             <li><a href="/login">log out</a></li>
             
+            <div>
+                <div class="user-information">
+                    <div class="userbutton">
+                        <button class="userbtn"><i class="fa-solid fa-user"></i></button>
+                    </div>
+                    <div class="information hide">
+                        <ul>
+                            <li>käyttäjä</li>
+                            <li><a href="/omatTiedot">Omat tiedot</a></li>
+                            <li>joopajoo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </ul>
+
+        
     </div>
 
 
@@ -40,6 +57,16 @@
 
     navToggle.addEventListener('click', function () {
         links.classList.toggle('show-links');
+    })
+
+    // user information
+    const userBtn = document.querySelector('.userbtn')
+    const userInfo = document.querySelector('.information')
+    userBtn.addEventListener('click', function () {
+        
+        userInfo.classList.toggle('hide');
+        userInfo.classList.toggle('test');
+        
     })
 
 

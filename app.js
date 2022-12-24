@@ -5,6 +5,8 @@ const Blog = require('./models/blog');
 const session = require('express-session');
 const passport = require('passport');
 //
+// import functions
+const day = require("./functions.js");
 //  require mongoose model
 const User = require('./models/user');
 const { render } = require('ejs');
@@ -131,17 +133,8 @@ app.get("/login", (req,res) => {
 // Post new blog to home page when you are logged in
 app.post('/home', (req,res) => {
     
-    // date that display when adding new blog to site
-    let today = new Date();
-    let options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    }
-
-    let day = today.toLocaleDateString('en-US', options);
-    
-    
+    const userId = req.user.id;
+    const numberOfPosts = req.user.posts;
 
     // Making new blog that include your username that you are logged in so we can display it to home page
     const blog = new Blog({
@@ -149,7 +142,9 @@ app.post('/home', (req,res) => {
         username: req.user.username,
         title: req.body.title,
         body: req.body.body,
-        date: day
+        date: day.getDate()
+
+        
     })
     
     blog.save()
@@ -157,8 +152,25 @@ app.post('/home', (req,res) => {
             res.redirect('/home')
         })
         .catch((err) => console.log(err));
+    
+
+    User.findById(userId, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            result.set({
+                posts: numberOfPosts + 1
+            })
+        }
+        result.save((err) => {
+            console.log(err);
+
+        })
+    })
+
 
 })
+
 
 
 //
@@ -222,9 +234,9 @@ app.post("/changepassword", (req,res) => {
 // Register new user
 app.post("/register", (req,res) => {
 
-   
+   number = 0
 
-    User.register({username: req.body.username}, req.body.password, function(err, user) {
+    User.register({username: req.body.username, posts: number, registeredDate: day.getDate()}, req.body.password, function(err, user) {
         if(err) {
             console.log(err)
             res.redirect('/register')
@@ -237,11 +249,25 @@ app.post("/register", (req,res) => {
     })    
 })
 //
+app.get("/omatTiedot", (req,res) => {
+
+    const userName = req.user.username;
+    const numberOfPosts = req.user.posts;
+    const registeredDate = req.user.registeredDate;
+    
+    
+    
+    
+    res.render("omatTiedot", {title: "Omat tiedot",userName,numberOfPosts, registeredDate})
+})
+
 // get login informations and log in.
 app.post("/login", (req,res) => {
-
+    
+    
     // Make a new user object when logging in
     const user = new User({
+        
         username:req.body.username,
         password:req.body.password
     })
@@ -252,8 +278,14 @@ app.post("/login", (req,res) => {
             console.log(err)
             
         } else {
+            
+            
             passport.authenticate('local') (req,res, function () {
-                res.redirect('/secret')
+                
+                
+
+                res.redirect('/home')
+
             })
         }
     } )
