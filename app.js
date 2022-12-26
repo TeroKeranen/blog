@@ -2,6 +2,7 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const Blog = require('./models/blog');
+const Comment = require('./models/comments')
 const session = require('express-session');
 const passport = require('passport');
 //
@@ -85,19 +86,22 @@ app.get('/home', (req,res) => {
 })
 
 app.get("/home/:id", (req,res) => {
-    const id = req.params.id;
+    const pageId = req.params.id;
+    
+    
+    
 
     const setUserId = req.user.id; // Haetaan kirjautuneen id
 
-    Blog.findById(id)
+    
+
+    Blog.findById(pageId)
         
         
     
         .then(result => {
             let blogCreaterId = result.id; // Haetaan blogista id, joka on sama kuin tekstin luoja user.id
-        
-                res.render("details", {blog: result, title: "Blog details", setUserId, blogCreaterId})
-  
+            res.render('details', {title: 'testi', blog: result, setUserId,blogCreaterId, pageId })
         })
         .catch(err => {
             console.log(err)
@@ -107,6 +111,7 @@ app.get("/home/:id", (req,res) => {
 // Tehdään tekstin poistamis mahdollisuus
 app.delete('/home/:id', (req,res) => {
     const id = req.params.id;
+    
 
     Blog.findByIdAndDelete(id)
         .then(result => {
@@ -115,6 +120,8 @@ app.delete('/home/:id', (req,res) => {
         .catch(err => console.log(err));
 })
 //
+
+
 // When you are logged in you go this about page
 app.get("/registeredAbout", (req,res) => {
     res.render('registeredAbout', {title: "about"})
@@ -171,6 +178,27 @@ app.post('/home', (req,res) => {
 
 })
 
+app.post("/home/:id", (req,res) => {
+    const user = req.user.username;
+    const userComment = req.body.comment
+    const id = req.params.id;
+
+    
+
+   
+    // Add comment to database
+    Blog.updateOne({_id:id},{$push: {comments: userComment}}, (err) => {
+         if(err) {
+             console.log(err)
+         } else {
+             res.redirect(`${id}`);
+         }
+     } )
+    
+
+
+    
+})
 
 
 //

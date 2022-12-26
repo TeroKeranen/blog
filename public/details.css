@@ -39,3 +39,7 @@
     align-items: center;
 }
 
+.comment-btn {
+    cursor:pointer;
+}
+

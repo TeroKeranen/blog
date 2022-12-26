@@ -108,6 +108,10 @@ nav {
             display: block;
     
         }
+        .information ul li a {
+            font-size: 1rem;
+            padding: 0rem;
+        }
 
 
 
@@ -176,14 +180,16 @@ nav {
         .information {
             background: rgb(253, 251, 251);
             min-width: 200px;
-            
             position: absolute;
             transition: all 0.4s ease;
-            
-            
             height: 0;
             transition: all 0.3s linear;
             
+        }
+
+        .information ul li a {
+            font-size: 1rem;
+            padding: 0rem;
         }
         .test {
             height: 300px;

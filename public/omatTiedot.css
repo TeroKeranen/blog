@@ -1,0 +1,36 @@
+.omat-tiedot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.omat-about {
+    margin: 50px 0;
+    color: white;
+    font-size: 2rem;
+
+}
+
+.omat-content {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin-bottom: 70px;
+    padding: 1rem;
+    background: rgb(158, 155, 155, 0.2);
+    border-radius: 10px;
+    
+}
+
+.omat-content p {
+    font-size: 1.5rem;
+    background: white;
+    padding: 1rem;
+    margin: 10px 0px;
+    border-radius: 5px;
+    min-width: 20%;
+}
