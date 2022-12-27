@@ -20,7 +20,12 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
-    comments: []
+    comments: [
+        {
+            comment: [{type:String}],
+            userCom : String,
+        }
+    ],
     
 }, {timestamps:true})
 

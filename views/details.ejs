@@ -29,17 +29,30 @@
                     <p><%=blog.body %></p>
                 </div>
 
-                <div class="comments">
-                    
+                
+                <div class="comments-container">
+                    <h1>Kommentit</h1>
                     <% blog.comments.forEach(testi => {%>
-                        <p><%=testi%></p>
+                        <div class="comments">
+
+                            <div class="user-comment-info">
+                                <p><%= testi.userCom %> sanoo</p>                              
+                            </div>
+
+                            <div class="commentt">
+                                <p> <%=testi.comment%></p>
+                            </div>
+                        
+
+                        </div>
                     <%})%>
                 </div>
+                
                 
                 <div class="keskustelu-container">
                     <form action="/home/<%= blog._id%>" method="POST">
                         <label for="comment">Kirjoita commentti</label>
-                        <input type="text" name="comment" id="comment">
+                        <textarea rows="15" cols="50" name="comment" id="comment"></textarea>
                         <button type="submit">submit</button>
                     </form>
                     
