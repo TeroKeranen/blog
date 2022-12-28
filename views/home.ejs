@@ -16,7 +16,7 @@
 
             <article class="blogs-grid">
 
-                
+
                     <% if(blogs.length > 0) { %>
                         <% blogs.forEach(blog => { %>
                             <article class="single-blog">
@@ -25,7 +25,8 @@
                             </div>
                             <div class="blog">
                                 <h3><%= blog.title %></h3>
-                                <p><%= blog.body.substring(0,100) + " ..." %></p>
+                                
+                                <p><%= blog.body.substring(0,20) + " ..." %></p>
                                 <a href="/home/<%= blog._id %>">Read more</a>
                                 <div class="date">
                                     <p><%= blog.date %></p>
@@ -37,19 +38,19 @@
                         <p>Ei ole yhtään blogia</p>
                     <% } %>
 
-                
-                
+
+
             </article>
-           
-            
+
+
         </main>
 
-        
+
             <!-- Footer -->
             <%- include('./partials/footer.ejs') %>
-        
 
-        
+
+
     </body>
 
 </html>

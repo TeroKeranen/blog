@@ -1,6 +1,7 @@
 
 const express = require('express');
 const { default: mongoose } = require('mongoose');
+const dotenv = require("dotenv").config();
 const Blog = require('./models/blog');
 
 const session = require('express-session');
@@ -42,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 //
 // mongoose db
-const dbUser = "mongodb+srv://netninja:tero123@cluster0.xecqchu.mongodb.net/blogsite?retryWrites=true&w=majority"
+const dbUser = process.env.MONGODB_URI
 //
 //Mongoose connect,
 mongoose.connect(dbUser, {useNewUrlParser: true})
@@ -323,6 +324,7 @@ app.post("/login", (req,res) => {
 })
 //
 // start server on port 3000
-app.listen(3000, function () {
+const PORT = process.env.PORT || 3000
+app.listen(PORT, function () {
     console.log('Server started on port 3000')
 })

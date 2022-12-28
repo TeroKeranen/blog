@@ -33,6 +33,7 @@
                 <div class="comments-container">
                     <h1>Kommentit</h1>
                     <% blog.comments.forEach(testi => {%>
+                        
                         <div class="comments">
 
                             <div class="user-comment-info">
@@ -48,7 +49,7 @@
                     <%})%>
                 </div>
                 
-                
+                <!-- Add comment -->
                 <div class="keskustelu-container">
                     <form action="/home/<%= blog._id%>" method="POST">
                         <label for="comment">Kirjoita commentti</label>

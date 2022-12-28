@@ -17,6 +17,23 @@
     width: 80%;
     margin: 30px auto;
 }
+.register-section button {
+    background: green;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    padding: 0.75rem;
+    border-radius: 5px;
+}
+.login-section a button{
+    
+    background: green;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    padding: 0.75rem;
+    border-radius: 5px;
+}
 
 .form-section {
     display: flex;
@@ -41,6 +58,8 @@
     padding: 0.75rem;
     border-radius: 5px;
 }
+
+
 
 @media screen and (min-width:785px) {
 
