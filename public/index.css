@@ -19,7 +19,7 @@
 }
 
 .home-section h1 {
-    font-size: 3.5rem;
+    font-size: 6vw;
 
 }
 
@@ -222,6 +222,11 @@
             display: none;
         }
     
+
+    .home-section h1 {
+        font-size: 3.5rem;
+
+    }
     .about-center {
     
         width: 30%;
