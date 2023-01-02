@@ -48,20 +48,21 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     
 }
 .rev-text {
     display:flex;
     flex-direction: column;
     justify-content: center;
+    
 
     align-items: center;
 }
 
 #info-text {
     
-    width: 70%;
+    width: 90%;
     word-wrap: break-word;
 }
 
@@ -69,6 +70,7 @@
     
     display:flex;
     flex-direction: column;
+    
     
     
 }

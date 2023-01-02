@@ -9,6 +9,10 @@
     margin-top: 30px;
 }
 
+.page-h1 h1 {
+    font-size: 8vw;
+}
+
 .login-section,
 .register-section {
     background: white;
@@ -16,6 +20,7 @@
     padding: 1rem;
     width: 80%;
     margin: 30px auto;
+    
 }
 .register-section button {
     background: green;
@@ -33,6 +38,7 @@
     margin-top: 20px;
     padding: 0.75rem;
     border-radius: 5px;
+    
 }
 
 .form-section {
@@ -59,10 +65,22 @@
     border-radius: 5px;
 }
 
+.changepass {
+    
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 
 @media screen and (min-width:785px) {
 
+    .page-h1 h1 {
+        font-size: 2.5rem;
+    }
     .login-section,
     .register-section {
         background: rgb(158, 155, 155, 0.2);

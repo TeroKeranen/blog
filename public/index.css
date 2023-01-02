@@ -82,6 +82,8 @@
 
     display: flex;
     flex-direction: column;
+    
+    
     margin: 0 auto 50px;
 
     padding: 2rem;
@@ -97,6 +99,14 @@
     background: black;
 }
 
+.span1,
+.span2,
+.span3,
+.span4 {
+    text-align: center;
+    font-size: 8vw;
+}
+
 
 
 .span1 span {
@@ -105,6 +115,7 @@
     display: inline-block;
     animation: flip 5s infinite;
     animation-delay: calc(.1s * var(--i));
+    
 }
 
 .span2 span {
@@ -139,8 +150,9 @@
 
 
 .index-third h2 {
-    font-size: 2rem;
+    font-size: 10vw;
     text-align: center;
+    margin-bottom: 10px;
 
 }
 
@@ -255,7 +267,12 @@
     
     
     }
+    .index-third h2 {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 10px;
     
+    }
     .btn-container {
             display: flex;
             border-radius: 10px;
@@ -300,7 +317,13 @@
         
         width: 60%;
     }
-        
+     .span1,
+    .span2,
+    .span3,
+    .span4 {
+        text-align: justify;
+    }
+   
     .span1 {
         font-size: 3.5rem;
         
