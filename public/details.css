@@ -14,8 +14,9 @@
     justify-content: space-between;
     align-items: center;
     
-    background: rgb(158, 155, 155, 0.2);
+    background: rgba(245, 244, 244, 0.8);
     border-radius: 10px;
+    
     width: 60%;
     width: 60%;
     padding: 1rem;
@@ -29,14 +30,14 @@
     border-radius: 5px;
 }
 .details-content {
-    background: rgb(158, 155, 155, 0.2);
+    background: rgba(245, 244, 244, 0.8);
     border-radius: 10px;
     width: 60%;
     margin-top: 30px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
 }
 
 .comment-btn {
