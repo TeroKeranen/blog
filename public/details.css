@@ -78,6 +78,8 @@
     border-radius: 10px;
     border: none;
     
+    width: 70vw;
+    
 }
 
 .keskustelu-container form {
@@ -98,7 +100,13 @@
 }
 @media screen and (min-width:785px) {
 
+    .keskustelu-container textarea {
+        border-radius: 10px;
+        border: none;
     
+        width: 100%;
+    
+    }
     
     
     
