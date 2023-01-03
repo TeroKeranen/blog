@@ -185,12 +185,15 @@ app.post("/home/:id", (req,res) => {
     const user = req.user.username; // Get username
     const userComment = req.body.comment // Get comment that user post
     const id = req.params.id;
+    const commentDate = day.getDate(); // get date when comment posted
+
+    console.log(commentDate);
 
     
 
    
     // Add comment to database with username 
-    Blog.updateOne({_id:id},{$push: {comments: {comment: userComment, userCom: user}}}, (err) => {
+    Blog.updateOne({_id:id},{$push: {comments: {comment: userComment, userCom: user,commetDate: commentDate}}}, (err) => {
          if(err) {
              console.log(err)
          } else {

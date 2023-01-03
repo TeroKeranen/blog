@@ -24,6 +24,7 @@ const blogSchema = new Schema({
         {
             comment: [{type:String}],
             userCom : String,
+            commetDate: String,
         }
     ],
     
