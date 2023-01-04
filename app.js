@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 //
 // import functions
-const {getDate, changpass} = require("./functions.js");
+const {getDate, changpass, findBlog, findBlogById, findByIdAndDelete} = require("./functions.js");
 //  require mongoose model
 const User = require('./models/user');
 const { render } = require('ejs');
@@ -68,61 +68,28 @@ app.get('/about', (req,res) => {
     res.render('about', {title: 'About'})
 })
 //
+//
 // render home page when you are logged in
 app.get('/home', (req,res) => {
-    // Find all the blogs that have been made.
-    
-    
-     
-    
-    Blog.find()
-        .then((result)=> {
-            res.render('home', {title: 'blogs', blogs: result})
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    // use findBlog function to get all the blogs that have been made.
+    findBlog(req,res);
 })
+//
+//
+//
 
 app.get("/home/:id", (req,res) => {
-    const pageId = req.params.id; // get page id
-    
-    
-    
-    
-    
-    
-    const setUserId = req.user.id; // Haetaan kirjautuneen id
-
-    
-
-    Blog.findById(pageId)
-        
-        
-    
-        .then(result => {
-            let blogCreaterId = result.id; // Haetaan blogista id, joka on sama kuin tekstin luoja user.id
-            res.render('details', {title: 'testi', blog: result, setUserId,blogCreaterId, pageId})
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    // check information in functions.js
+    findBlogById(req,res);
 })
 
 // Tehdään tekstin poistamis mahdollisuus
 app.delete('/home/:id', (req,res) => {
-    const id = req.params.id;
-    
 
-    Blog.findByIdAndDelete(id)
-        .then(result => {
-            res.json({redirect: '/home'})
-        })
-        .catch(err => console.log(err));
+    findByIdAndDelete(req,res);
 })
 //
-
-
+//
 // When you are logged in you go this about page
 app.get("/registeredAbout", (req,res) => {
     res.render('registeredAbout', {title: "about"})

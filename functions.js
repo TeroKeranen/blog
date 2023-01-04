@@ -1,4 +1,5 @@
 const User = require('./models/user');
+const Blog = require('./models/blog');
 
 // Get current date function
 function getDate ()  {
@@ -16,7 +17,7 @@ function getDate ()  {
 
 // change your password function
 function changpass (req,res) {
-
+    //this use current logged user username
     User.findByUsername(req.body.username, (err, user) => {
         if(err) {
             res.send(err)
@@ -33,8 +34,55 @@ function changpass (req,res) {
     
 }
 
+
+// find blogs function, this return all blogs to home page
+function findBlog(req,res) {
+
+    Blog.find()
+        .then((result)=> {
+            res.render('home', {title: 'blogs', blogs: result})
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+// find blog by id to app.get("/home/:id"
+
+function findBlogById (req,res) {
+    const pageId = req.params.id; // get page id
+    const setUserId = req.user.id; // Haetaan kirjautuneen id
+
+    Blog.findById(pageId)
+        .then(result => {
+            let blogCreaterId = result.id; // Haetaan blogista id, joka on sama kuin tekstin luoja user.id
+            res.render('details', {title: 'testi', blog: result, setUserId,blogCreaterId, pageId})
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+// Function to delele your own post
+
+function findByIdAndDelete (req,res) {
+
+    const id = req.params.id; // get blog post id;
+    
+    // find that id in the database and delete it
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({redirect: '/home'})
+        })
+        .catch(err => console.log(err));
+
+}
+
 module.exports = {
     getDate,
     changpass,
+    findBlog,
+    findBlogById,
+    findByIdAndDelete,
 }
 
