@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 //
 // import functions
-const day = require("./functions.js");
+const {getDate, changpass} = require("./functions.js");
 //  require mongoose model
 const User = require('./models/user');
 const { render } = require('ejs');
@@ -59,12 +59,10 @@ passport.deserializeUser(User.deserializeUser());
 // render to index page, when you are not logged in
 app.get('/', (req,res) => {
 
-    
-    
-    
-
     res.render('index', {title: 'All blogs'});
 })
+//
+//
 // render to about page when not logged in
 app.get('/about', (req,res) => {
     res.render('about', {title: 'About'})
@@ -152,7 +150,7 @@ app.post('/home', (req,res) => {
         username: req.user.username,
         title: req.body.title,
         body: req.body.body,
-        date: day.getDate()
+        date: getDate()
 
         
     })
@@ -185,7 +183,7 @@ app.post("/home/:id", (req,res) => {
     const user = req.user.username; // Get username
     const userComment = req.body.comment // Get comment that user post
     const id = req.params.id;
-    const commentDate = day.getDate(); // get date when comment posted
+    const commentDate = getDate(); // get date when comment posted
 
     console.log(commentDate);
 
@@ -250,19 +248,9 @@ app.get('/logout', (req,res) => {
 })
 // Change your password 
 app.post("/changepassword", (req,res) => {
-    User.findByUsername(req.body.username, (err, user) => {
-        if(err) {
-            res.send(err)
-        } else {
-            user.changePassword(req.body.oldpassword, req.body.newpassword, function (err) {
-                if(err) {
-                    res.send(err);
-                } else {
-                    res.send('successfulu changed')
-                }
-            })
-        }
-    })
+    
+    // changepassword function
+    changpass(req,res);
 })
 //
 // Register new user
@@ -271,31 +259,52 @@ app.post("/register", (req,res) => {
     number = 0 // Add post number to database;
     const passwordInput = req.body.password; // get first password input
     const passwordInput2 = req.body.password2; // get second password input
-    const msg = "Salasanat eivät olleet samoja";
+    const userInput = req.body.username; // get username input
+    
+    const msg = "Salasanat eivät olleet samoja"; // display this when passwords is not same
+    const usermsg = "Käyttäjänimi on jo käytössä"; // display this if username is taken
+    
 
-    // if password and password2 is not the same then error message will display
-    if (passwordInput === passwordInput2) {
+    // Try find entered username value in the User database, if user is already in database display error message on the page
+    User.findOne({username: userInput}, function(err, foundUser) {
 
-        User.register({username: req.body.username, posts: number, registeredDate: day.getDate()}, req.body.password, function(err, user) {
-            if(err) {
-                console.log(err)
-                res.redirect('/register')
         
-            } else {
+        // This tells us that user is already in database
+        if(foundUser) {
+
+            res.render('register', {usererr: usermsg, title: "Register"})
+        
+        // If username not found in database it will continue
+        } else {
+
+            // if password and password2 is not the same then error message will display
+            if (passwordInput === passwordInput2) {
+
+                User.register({username: req.body.username, posts: number, registeredDate: getDate()}, req.body.password, function(err, user) {
+                
+                    if(err) {
+                        console.log(err)
+                        res.redirect('/register')
+        
+                    } else {
             
-                passport.authenticate('local')(req,res,function() {
-                    res.redirect('/secret');
+                        passport.authenticate('local')(req,res,function() {
+                        res.redirect('/secret');
+                        })
+                    }
                 })
+            
+            // if passwords is not the same it will render back to register page and display a error message
+            } else {
+                res.render('register', {errmsg: msg, title: "Register"})
+        
             }
-        })
 
-    } else {
-        res.render('register', {errmsg: msg, title: "Register"})
-        
-    }
-
-        
+        }
+    })        
 })
+//
+//
 //
 app.get("/omatTiedot", (req,res) => {
 
@@ -308,7 +317,8 @@ app.get("/omatTiedot", (req,res) => {
     
     res.render("omatTiedot", {title: "Omat tiedot",userName,numberOfPosts, registeredDate})
 })
-
+//
+//
 // get login informations and log in.
 app.post("/login", (req,res) => {
     
