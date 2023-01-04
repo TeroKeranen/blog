@@ -268,19 +268,33 @@ app.post("/changepassword", (req,res) => {
 // Register new user
 app.post("/register", (req,res) => {
 
-   number = 0
+    number = 0 // Add post number to database;
+    const passwordInput = req.body.password; // get first password input
+    const passwordInput2 = req.body.password2; // get second password input
+    const msg = "Salasanat eivät olleet samoja";
 
-    User.register({username: req.body.username, posts: number, registeredDate: day.getDate()}, req.body.password, function(err, user) {
-        if(err) {
-            console.log(err)
-            res.redirect('/register')
-        } else {
+    // if password and password2 is not the same then error message will display
+    if (passwordInput === passwordInput2) {
+
+        User.register({username: req.body.username, posts: number, registeredDate: day.getDate()}, req.body.password, function(err, user) {
+            if(err) {
+                console.log(err)
+                res.redirect('/register')
+        
+            } else {
             
-            passport.authenticate('local')(req,res,function() {
-                res.redirect('/secret');
-            })
-        }
-    })    
+                passport.authenticate('local')(req,res,function() {
+                    res.redirect('/secret');
+                })
+            }
+        })
+
+    } else {
+        res.render('register', {errmsg: msg, title: "Register"})
+        
+    }
+
+        
 })
 //
 app.get("/omatTiedot", (req,res) => {

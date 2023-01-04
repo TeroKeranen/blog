@@ -13,13 +13,23 @@
             <p>Jotta voit ruveta luomaan omaa blogia, sinun on ensiksi kirjauduttava sivullemme</p>
         </div>
 
+        
         <section class="register-section">
             <form action="/register" method="POST" class="form-section">
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username">
                 <br/>
+
+                <!-- Jos salasanat eivät täsmää niin tulee virhe ilmoitus -->
+                <% if(locals.errmsg) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= errmsg %>
+                    </div>
+                <% } %>
                 <label for="password">password: </label>
                 <input type="text" id="password" name="password">
+                <label for="password2">repeat password: </label>
+                <input type="text" id="password2" name="password2">
                 
                 <button>Submit</button>
             </form>
