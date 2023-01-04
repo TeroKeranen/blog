@@ -22,13 +22,6 @@ mongoose.set('strictQuery', true);
 //
 
 
-
-
-
-
-
-
-
 // Set up expressjs session handling middleware
 app.use(session({
     secret: "Our little secret.",
