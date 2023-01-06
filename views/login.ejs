@@ -14,6 +14,11 @@
 
             <section class="login-section">
                 <form action="/login" method="POST" class="form-section">
+                    <% if(locals.erromsg) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= erromsg %>
+                    </div>
+                    <% } %>
                     <label for="username">Username: </label>
                     <input type="text" id="username" name="username" autocomplete="off">
                     <br/>

@@ -202,17 +202,35 @@ function logIn (req,res) {
     req.login(user, (err) => {
         if(err) {
             console.log(err)
+        
             
         } else {
+        
             
-            
-            passport.authenticate('local') (req,res, function () {
+            User.findOne({username: user.username}, function (err, foundUser) {
+
+                const userErrorMsg = "Käyttäjänimeä ei löydy"
+                
+                if (err) {
+                    console.log(err)
+                }
+                if (!foundUser) {
+                    res.render("login", {title: "Login", erromsg:userErrorMsg})
+                }
+
+                if (foundUser) {
+                    passport.authenticate('local') (req,res, function () {
+                        
+                
                 
                 
 
-                res.redirect('/home')
+                    res.redirect('/home')
 
+                    })
+                }
             })
+            
         }
     } )
 }
