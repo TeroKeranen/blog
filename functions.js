@@ -220,11 +220,7 @@ function logIn (req,res) {
 
                 if (foundUser) {
                     passport.authenticate('local') (req,res, function () {
-                        
-                
-                
-                
-
+                                      
                     res.redirect('/home')
 
                     })
